@@ -1,0 +1,2447 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kode+Mono:wght@400..700&family=Montserrat&display=swap');
+
+:root {
+    --card_border_radius: 16px;
+    --row_gap: 12px;
+    --card-top_margin: 5px;
+    --card_heading_gap: 6px;
+    --card_heading_title_margin: 8px;
+    --card_heading_author_margin: -5px;
+    --card_lyrics_padd_top: 10px;
+    --card_lyrics_padd_bottom: 10px;
+    --card_lyrics_font_size: 10px;
+    --card_thumbnail_h: 40px;
+    --card_thumbnail_w: 40px;
+
+    --card_small_h: 11.5rem;
+    --card_small_w: 11.5rem;
+    --card_small_inner_h: 10.5rem;
+    --card_small_inner_w: 10.5rem;
+    --card_lyrics_font_size_small: 11px;
+    --card_lyrics_padd_top: 10px;
+    --card_lyrics_padd_bottom: 10px;
+    --card_small_inner_padding: 9px;
+
+    --card_medium_h: 12.5rem;
+    --card_medium_w: 11.5rem;
+    --card_medium_inner_w: 10.5rem;
+    --card_medium_inner_h: 11.5rem;
+    --card_medium_inner_padd: 12px;
+    --card_lyrics_font_size_medium: 11px;
+    --card_lyrics_padd_top_medium: 10px;
+    --card_lyrics_padd_bottom_medium: 10px;
+
+    --card_large_h: 13.5rem;
+    --card_large_w: 11.5rem;
+    --card_large_inner_h: 12.5rem;
+    --card_large_inner_w: 11.5rem;
+    --card_large_inner_padd: 12px;
+    --card_lyrics_font_size_large: 11px;
+    --card_lyrics_padd_top_large: 10px;
+    --card_lyrics_padd_bottom_large: 10px;
+
+    --player_wrapper_width: 208px;
+    --player_wrapper_padding: 15px;
+    --player_wrapper_line_height: 20px;
+    --playing_thumbnail_width: 100%;
+    --playing_thumbnail_height: 145px;
+    --playing_details_mt: 15px;
+    --playing_details_font_size: 1.5rem;
+    --playing_details_gap: 2px;
+    --playing_author_font_size: medium;
+    --playing_controls_mt: 10px;
+    --timeline_w: 100%;
+    --timeline_h: 3px;
+    --timeline_ball_r: 15px;
+    --timeline_val: 0%
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #040D12;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    height: 100lvh;
+    width: 95lvw;
+    overflow: hidden;
+}
+
+.wrapper {
+    gap: var(--row_gap);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.row {
+    filter: blur(0.4px);
+}
+
+
+.row-out-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    animation: slide-in 20s linear infinite;
+}
+
+.row-in-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    animation: slide-out 20s linear infinite;
+}
+
+.card {
+    padding: 0;
+    margin: var(--card-top_margin) 0px;
+    border-radius: var(--card_border_radius);
+    font-family: "Kode Mono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 900;
+}
+
+.card_small {
+    height: var(--card_small_h);
+    width: var(--card_small_h);
+    background: #8E7AB5;
+}
+
+.card_small .inner {
+    background-color: #735F99;
+    height: var(--card_small_inner_h);
+    width: var(--card_small_inner_w);
+    border-radius: 7px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2), -3px -3px 10px rgba(0, 0, 0, 0.2);
+    padding: var(--card_small_inner_padding);
+    overflow: hidden;
+}
+
+.small_lyrics {
+    padding-top: var(--card_lyrics_padd_top);
+    padding-bottom: var(--card_lyrics_padd_bottom);
+    font-size: var(--card_lyrics_font_size_small);
+}
+
+.midium_lyrics {
+    padding-top: var(--card_lyrics_padd_top_medium);
+    padding-bottom: var(--card_lyrics_padd_bottom_medium);
+    font-size: var(--card_lyrics_font_size_medium);
+}
+
+.large_lyrics {
+    padding-top: var(--card_lyrics_padd_top_large);
+    padding-bottom: var(--card_lyrics_padd_bottom_large);
+    font-size: var(--card_lyrics_font_size_large);
+}
+
+.heading {
+    display: flex;
+    justify-content: start;
+    gap: var(--card_heading_gap);
+}
+
+.song_name {
+    font-size: var(--card_song_name);
+    white-space: nowrap;
+
+}
+
+.song_author {
+    font-size: var(--card_song_author);
+    white-space: nowrap;
+}
+
+.heading .details h1 {
+    margin-top: var(--card_heading_title_margin);
+    font-size: small;
+}
+
+.heading .details p {
+    font-size: smaller;
+    margin-top: var(--card_heading_author_margin);
+}
+
+.lyrics {
+    padding-top: var(--card_lyrics_padd_top);
+    padding-bottom: var(--card_lyrics_padd_bottom);
+    font-size: var(--card_lyrics_font_size);
+}
+
+.thumbnail {
+    height: var(--card_thumbnail_h);
+    width: var(--card_thumbnail_w);
+    border-radius: 6px;
+}
+
+.card_medium {
+    height: var(--card_medium_h);
+    width: var(--card_medium_w);
+    background: #E493B3;
+}
+
+.card_medium .inner {
+    background: rgba(185, 76, 119, 0.4);
+    height: var(--card_medium_inner_h);
+    width: var(--card_medium_inner_w);
+    border-radius: 7px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2), -3px -3px 10px rgba(0, 0, 0, 0.2);
+    padding: var(--card_medium_inner_padd);
+    overflow: hidden;
+}
+
+.card_large {
+    height: var(--card_large_h);
+    width: var(--card_large_w);
+    background: #B784B7;
+}
+
+.card_large .inner {
+    background: #A467A4;
+    height: var(--card_large_inner_h);
+    width: var(--card_large_inner_w);
+    border-radius: 7px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2), -3px -3px 10px rgba(0, 0, 0, 0.2);
+    padding: var(--card_large_inner_padd);
+    overflow: hidden;
+}
+
+.card>.inner {
+    mask: linear-gradient(to bottom, white 90%, transparent);
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes slide-out {
+    from {
+        transform: translateY(-50%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.player-wrapper {
+    border-radius: 15px;
+    background: linear-gradient(-45deg, rgba(255, 255, 255, 0.15), rgba(160, 156, 156, 0.15));
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 4px 3px 10px rgba(0, 0, 0, 0.5), -4px -3px 20px rgba(0, 0, 0, 0.5), inset 4px 4px 25px rgba(255, 255, 255, 0.25);
+    border: solid 2px rgba(169, 135, 135, 0.5);
+    padding: var(--player_wrapper_padding);
+    font-family: "Kanit", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    line-height: var(--player_wrapper_line_height);
+}
+
+.player-wrapper>.player {
+    width: var(--player_wrapper_width);
+}
+
+.playing-thumbnail {
+    border-radius: 4px;
+    background: url('/static/img/pride.jpg');
+    width: var(--playing_thumbnail_width);
+    height: var(--playing_thumbnail_height);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.playing-details {
+    margin-top: var(--playing_details_mt);
+    font-size: var(--playing_details_font_size);
+    color: rgba(255, 255, 255, 0.9);
+    gap: var(--playing_details_gap);
+}
+
+.playing-author {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: var(--playing_author_font_size);
+}
+
+.controls {
+    margin-top: var(--playing_controls_mt);
+}
+
+
+#timeline {
+    width: var(--timeline_w);
+    height: var(--timeline_h);
+    appearance: none;
+    border-radius: 20px;
+    background: linear-gradient(to right, rgb(0, 0, 0) var(--timeline_val), rgb(0, 0, 0) var(--timeline_val), white var(--timeline_val), white 100%);
+
+}
+
+#timeline::-webkit-slider-thumb {
+    appearance: none;
+    width: var(--timeline_ball_r);
+    height: var(--timeline_ball_r);
+    background-color: #333;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.play-wrapper {
+    background: linear-gradient(-45deg, #E1DDD7, #5A5956);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 251px) {
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.75rem;
+        --card-top_margin: 0.2rem;
+        --card_song_author: 0.5rem;
+        --card_song_name: 0.5rem;
+        --card_heading_gap: 3px;
+        --card_heading_title_margin: 0.4rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 5px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 1.7rem;
+        --card_thumbnail_w: 1.7rem;
+
+        --card_small_h: 7rem;
+        --card_small_w: 7rem;
+        --card_small_inner_h: 6rem;
+        --card_small_inner_w: 6rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 6px;
+
+        --card_medium_h: 9rem;
+        --card_medium_w: 7rem;
+        --card_medium_inner_w: 6rem;
+        --card_medium_inner_h: 8rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 7px;
+
+        --card_large_h: 11rem;
+        --card_large_w: 7rem;
+        --card_large_inner_h: 10rem;
+        --card_large_inner_w: 6rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 7px;
+
+        --player_wrapper_width: 140px;
+        --playing_thumbnail_height: 125px;
+        --player_wrapper_padding: 10px;
+        --playing_details_font_size: 1rem;
+        --player_wrapper_line_height: 15px;
+        --playing_details_mt: 10px;
+        --playing_thumbnail_width: 100%;
+        --playing_details_gap: 2px;
+        --playing_author_font_size: medium;
+        --playing_controls_mt: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+
+    .player-wrapper {
+        padding: var(--player_wrapper_padding);
+        line-height: var(--player_wrapper_line_height);
+    }
+
+    .player-wrapper>.player {
+        width: var(--player_wrapper_width);
+    }
+
+    .playing-thumbnail {
+        width: var(--playing_thumbnail_width);
+        height: var(--playing_thumbnail_height);
+    }
+
+    .playing-details {
+        margin-top: var(--playing_details_mt);
+        font-size: var(--playing_details_font_size);
+        gap: var(--playing_details_gap);
+    }
+
+    .playing-author {
+        font-size: var(--playing_author_font_size);
+    }
+
+    .controls {
+        margin-top: var(--playing_controls_mt);
+    }
+}
+
+@media only screen and (min-width: 251px) and (max-width: 281px) {
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.75rem;
+        --card-top_margin: 0.2rem;
+        --card_song_author: 0.5rem;
+        --card_song_name: 0.5rem;
+        --card_heading_gap: 3px;
+        --card_heading_title_margin: 0.4rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 5px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 1.7rem;
+        --card_thumbnail_w: 1.7rem;
+
+        --card_small_h: 7.5rem;
+        --card_small_w: 7.5rem;
+        --card_small_inner_h: 6.5rem;
+        --card_small_inner_w: 6.5rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 6px;
+
+        --card_medium_h: 9.5rem;
+        --card_medium_w: 7.5rem;
+        --card_medium_inner_w: 6.5rem;
+        --card_medium_inner_h: 8.5rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 7px;
+
+        --card_large_h: 11.5rem;
+        --card_large_w: 7.5rem;
+        --card_large_inner_h: 10.5rem;
+        --card_large_inner_w: 6.5rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 7px;
+
+        --player_wrapper_width: 160px;
+        --playing_thumbnail_height: 125px;
+        --player_wrapper_padding: 10px;
+        --playing_details_font_size: 1rem;
+        --player_wrapper_line_height: 15px;
+        --playing_details_mt: 10px;
+        --playing_thumbnail_width: 100%;
+        --playing_details_gap: 2px;
+        --playing_author_font_size: medium;
+        --playing_controls_mt: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+
+    .player-wrapper {
+        padding: var(--player_wrapper_padding);
+        line-height: var(--player_wrapper_line_height);
+    }
+
+    .player-wrapper>.player {
+        width: var(--player_wrapper_width);
+    }
+
+    .playing-thumbnail {
+        width: var(--playing_thumbnail_width);
+        height: var(--playing_thumbnail_height);
+    }
+
+    .playing-details {
+        margin-top: var(--playing_details_mt);
+        font-size: var(--playing_details_font_size);
+        gap: var(--playing_details_gap);
+    }
+
+    .playing-author {
+        font-size: var(--playing_author_font_size);
+    }
+
+    .controls {
+        margin-top: var(--playing_controls_mt);
+    }
+}
+
+@media only screen and (min-width: 281px) and (max-width: 311px) {
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.75rem;
+        --card-top_margin: 0.2rem;
+        --card_song_author: 0.6rem;
+        --card_song_name: 0.6rem;
+        --card_heading_gap: 3px;
+        --card_heading_title_margin: 0.4rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 5px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 1.7rem;
+        --card_thumbnail_w: 1.7rem;
+
+        --card_small_h: 8rem;
+        --card_small_w: 8rem;
+        --card_small_inner_h: 7rem;
+        --card_small_inner_w: 7rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 7px;
+
+        --card_medium_h: 10rem;
+        --card_medium_w: 8rem;
+        --card_medium_inner_w: 7rem;
+        --card_medium_inner_h: 9rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 8px;
+
+        --card_large_h: 12rem;
+        --card_large_w: 8rem;
+        --card_large_inner_h: 11rem;
+        --card_large_inner_w: 7rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 8px;
+
+        --player_wrapper_width: 170px;
+        --playing_thumbnail_height: 125px;
+        --player_wrapper_padding: 10px;
+        --playing_details_font_size: 1rem;
+        --player_wrapper_line_height: 15px;
+        --playing_details_mt: 10px;
+        --playing_thumbnail_width: 100%;
+        --playing_details_gap: 2px;
+        --playing_author_font_size: medium;
+        --playing_controls_mt: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+
+    .player-wrapper {
+        padding: var(--player_wrapper_padding);
+        line-height: var(--player_wrapper_line_height);
+    }
+
+    .player-wrapper>.player {
+        width: var(--player_wrapper_width);
+    }
+
+    .playing-thumbnail {
+        width: var(--playing_thumbnail_width);
+        height: var(--playing_thumbnail_height);
+    }
+
+    .playing-details {
+        margin-top: var(--playing_details_mt);
+        font-size: var(--playing_details_font_size);
+        gap: var(--playing_details_gap);
+    }
+
+    .playing-author {
+        font-size: var(--playing_author_font_size);
+    }
+
+    .controls {
+        margin-top: var(--playing_controls_mt);
+    }
+}
+
+@media only screen and (min-width: 311px) and (max-width: 341px) {
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.75rem;
+        --card-top_margin: 0.2rem;
+        --card_song_author: 0.7rem;
+        --card_song_name: 0.7rem;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.2rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 8px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 2rem;
+        --card_thumbnail_w: 2rem;
+
+        --card_small_h: 9rem;
+        --card_small_w: 9rem;
+        --card_small_inner_h: 8rem;
+        --card_small_inner_w: 8rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 8px;
+
+        --card_medium_h: 11rem;
+        --card_medium_w: 9rem;
+        --card_medium_inner_w: 8rem;
+        --card_medium_inner_h: 10rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 9px;
+
+        --card_large_h: 13rem;
+        --card_large_w: 9rem;
+        --card_large_inner_h: 12rem;
+        --card_large_inner_w: 8rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 9px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+}
+
+@media only screen and (min-width: 341px) and (max-width: 371px) {
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.75rem;
+        --card-top_margin: 0.2rem;
+        --card_song_author: 0.8rem;
+        --card_song_name: 0.78em;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.7rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 8px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 2.5rem;
+        --card_thumbnail_w: 2.5rem;
+
+        --card_small_h: 10rem;
+        --card_small_w: 10rem;
+        --card_small_inner_h: 9rem;
+        --card_small_inner_w: 9rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 9px;
+
+        --card_medium_h: 12rem;
+        --card_medium_w: 10rem;
+        --card_medium_inner_w: 9rem;
+        --card_medium_inner_h: 11rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 9px;
+
+        --card_large_h: 14rem;
+        --card_large_w: 10rem;
+        --card_large_inner_h: 13rem;
+        --card_large_inner_w: 9rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+}
+
+@media only screen and (min-width: 371px) and (max-width: 401px) {
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.8rem;
+        --card-top_margin: 0.3rem;
+        --card_song_author: 0.8rem;
+        --card_song_name: 0.78em;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.7rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 8px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 2.5rem;
+        --card_thumbnail_w: 2.5rem;
+
+        --card_small_h: 10.5rem;
+        --card_small_w: 10.5rem;
+        --card_small_inner_h: 9.5rem;
+        --card_small_inner_w: 9.5rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 9px;
+
+        --card_medium_h: 12.5rem;
+        --card_medium_w: 10.5rem;
+        --card_medium_inner_w: 9.5rem;
+        --card_medium_inner_h: 11.5rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 10px;
+
+        --card_large_h: 14.5rem;
+        --card_large_w: 10.5rem;
+        --card_large_inner_h: 13.5rem;
+        --card_large_inner_w: 9.5rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+}
+
+@media only screen and (min-width: 401px) and (max-width: 431px) {
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.8rem;
+        --card-top_margin: 0.3rem;
+        --card_song_author: 0.8rem;
+        --card_song_name: 0.78em;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.7rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 8px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 2.5rem;
+        --card_thumbnail_w: 2.5rem;
+
+        --card_small_h: 11.5rem;
+        --card_small_w: 11.5rem;
+        --card_small_inner_h: 10.5rem;
+        --card_small_inner_w: 10.5rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 10px;
+
+        --card_medium_h: 13.5rem;
+        --card_medium_w: 11.5rem;
+        --card_medium_inner_w: 10.5rem;
+        --card_medium_inner_h: 12.5rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 11px;
+
+        --card_large_h: 15.5rem;
+        --card_large_w: 11.5rem;
+        --card_large_inner_h: 14.5rem;
+        --card_large_inner_w: 10.5rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 11px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+}
+
+@media only screen and (min-width: 431px) and (max-width: 461px) {
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.8rem;
+        --card-top_margin: 0.3rem;
+        --card_song_author: 0.8rem;
+        --card_song_name: 0.78em;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.7rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 8px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 2.5rem;
+        --card_thumbnail_w: 2.5rem;
+
+        --card_small_h: 12rem;
+        --card_small_w: 12rem;
+        --card_small_inner_h: 11rem;
+        --card_small_inner_w: 11rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 10px;
+
+        --card_medium_h: 14rem;
+        --card_medium_w: 12rem;
+        --card_medium_inner_w: 11rem;
+        --card_medium_inner_h: 13rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 11px;
+
+        --card_large_h: 16rem;
+        --card_large_w: 12rem;
+        --card_large_inner_h: 15rem;
+        --card_large_inner_w: 11rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 11px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+}
+
+@media only screen and (min-width: 461px) and (max-width: 501px) {
+    .wrapper {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.8rem;
+        --card-top_margin: 0.1rem;
+        --card_song_author: 0.6rem;
+        --card_song_name: 0.6em;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.7rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 5px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 2rem;
+        --card_thumbnail_w: 2rem;
+
+        --card_small_h: 8.5rem;
+        --card_small_w: 8.5rem;
+        --card_small_inner_h: 7.5rem;
+        --card_small_inner_w: 7.5rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 7px;
+
+        --card_medium_h: 10.5rem;
+        --card_medium_w: 8.5rem;
+        --card_medium_inner_w: 7.5rem;
+        --card_medium_inner_h: 9.5rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 8px;
+
+        --card_large_h: 12.5rem;
+        --card_large_w: 8.5rem;
+        --card_large_inner_h: 11.5em;
+        --card_large_inner_w: 7.5rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 8px;
+
+        --player_wrapper_width: 200px;
+        --playing_thumbnail_height: 155px;
+        --player_wrapper_padding: 15px;
+        --playing_details_font_size: 1.5rem;
+        --player_wrapper_line_height: 20px;
+        --playing_details_mt: 10px;
+        --playing_thumbnail_width: 100%;
+        --playing_details_gap: 2px;
+        --playing_author_font_size: medium;
+        --playing_controls_mt: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+
+    .player-wrapper {
+        padding: var(--player_wrapper_padding);
+        line-height: var(--player_wrapper_line_height);
+    }
+
+    .player-wrapper>.player {
+        width: var(--player_wrapper_width);
+    }
+
+    .playing-thumbnail {
+        width: var(--playing_thumbnail_width);
+        height: var(--playing_thumbnail_height);
+    }
+
+    .playing-details {
+        margin-top: var(--playing_details_mt);
+        font-size: var(--playing_details_font_size);
+        gap: var(--playing_details_gap);
+    }
+
+    .playing-author {
+        font-size: var(--playing_author_font_size);
+    }
+
+    .controls {
+        margin-top: var(--playing_controls_mt);
+    }
+}
+
+@media only screen and (min-width: 501px) and (max-width: 551px) {
+    .wrapper {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.8rem;
+        --card-top_margin: 0.2rem;
+        --card_song_author: 0.7rem;
+        --card_song_name: 0.7em;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.5rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 8px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 2.25rem;
+        --card_thumbnail_w: 2.25rem;
+
+        --card_small_h: 9.5rem;
+        --card_small_w: 9.5rem;
+        --card_small_inner_h: 8.5rem;
+        --card_small_inner_w: 8.5rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 8px;
+
+        --card_medium_h: 11.5rem;
+        --card_medium_w: 9.5rem;
+        --card_medium_inner_w: 8.5rem;
+        --card_medium_inner_h: 10.5rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 9px;
+
+        --card_large_h: 13.5rem;
+        --card_large_w: 9.5rem;
+        --card_large_inner_h: 12.5em;
+        --card_large_inner_w: 8.5rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 9px;
+
+        --player_wrapper_width: 220px;
+        --playing_thumbnail_height: 175px;
+        --player_wrapper_padding: 10px;
+        --playing_details_font_size: 2rem;
+        --player_wrapper_line_height: 25px;
+        --playing_details_mt: 20px;
+        --playing_thumbnail_width: 100%;
+        --playing_details_gap: 2px;
+        --playing_author_font_size: medium;
+        --playing_controls_mt: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+
+    .player-wrapper {
+        padding: var(--player_wrapper_padding);
+        line-height: var(--player_wrapper_line_height);
+    }
+
+    .player-wrapper>.player {
+        width: var(--player_wrapper_width);
+    }
+
+    .playing-thumbnail {
+        width: var(--playing_thumbnail_width);
+        height: var(--playing_thumbnail_height);
+    }
+
+    .playing-details {
+        margin-top: var(--playing_details_mt);
+        font-size: var(--playing_details_font_size);
+        gap: var(--playing_details_gap);
+    }
+
+    .playing-author {
+        font-size: var(--playing_author_font_size);
+    }
+
+    .controls {
+        margin-top: var(--playing_controls_mt);
+    }
+}
+
+@media only screen and (min-width: 551px) and (max-width: 601px) {
+    .wrapper {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.8rem;
+        --card-top_margin: 0.2rem;
+        --card_song_author: 0.8rem;
+        --card_song_name: 0.8em;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.6rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 8px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 2.5rem;
+        --card_thumbnail_w: 2.5rem;
+
+        --card_small_h: 10.5rem;
+        --card_small_w: 10.5rem;
+        --card_small_inner_h: 9.5rem;
+        --card_small_inner_w: 9.5rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 9px;
+
+        --card_medium_h: 12.5rem;
+        --card_medium_w: 10.5rem;
+        --card_medium_inner_w: 9.5rem;
+        --card_medium_inner_h: 11.5rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 10px;
+
+        --card_large_h: 14.5rem;
+        --card_large_w: 10.5rem;
+        --card_large_inner_h: 13.5em;
+        --card_large_inner_w: 9.5rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 10px;
+
+        --player_wrapper_width: 220px;
+        --playing_thumbnail_height: 175px;
+        --player_wrapper_padding: 10px;
+        --playing_details_font_size: 2rem;
+        --player_wrapper_line_height: 25px;
+        --playing_details_mt: 20px;
+        --playing_thumbnail_width: 100%;
+        --playing_details_gap: 2px;
+        --playing_author_font_size: medium;
+        --playing_controls_mt: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+
+    .player-wrapper {
+        padding: var(--player_wrapper_padding);
+        line-height: var(--player_wrapper_line_height);
+    }
+
+    .player-wrapper>.player {
+        width: var(--player_wrapper_width);
+    }
+
+    .playing-thumbnail {
+        width: var(--playing_thumbnail_width);
+        height: var(--playing_thumbnail_height);
+    }
+
+    .playing-details {
+        margin-top: var(--playing_details_mt);
+        font-size: var(--playing_details_font_size);
+        gap: var(--playing_details_gap);
+    }
+
+    .playing-author {
+        font-size: var(--playing_author_font_size);
+    }
+
+    .controls {
+        margin-top: var(--playing_controls_mt);
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 651px) {
+    .wrapper {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.8rem;
+        --card-top_margin: 0.2rem;
+        --card_song_author: 0.9rem;
+        --card_song_name: 0.9em;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.6rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 8px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 3rem;
+        --card_thumbnail_w: 3rem;
+
+        --card_small_h: 11.5rem;
+        --card_small_w: 11.5rem;
+        --card_small_inner_h: 10.5rem;
+        --card_small_inner_w: 10.5rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 11px;
+
+        --card_medium_h: 13.5rem;
+        --card_medium_w: 11.5rem;
+        --card_medium_inner_w: 10.5rem;
+        --card_medium_inner_h: 12.5rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 12px;
+
+        --card_large_h: 15.5rem;
+        --card_large_w: 11.5rem;
+        --card_large_inner_h: 14.5em;
+        --card_large_inner_w: 10.5rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 12px;
+
+        --player_wrapper_width: 220px;
+        --playing_thumbnail_height: 175px;
+        --player_wrapper_padding: 10px;
+        --playing_details_font_size: 2rem;
+        --player_wrapper_line_height: 25px;
+        --playing_details_mt: 20px;
+        --playing_thumbnail_width: 100%;
+        --playing_details_gap: 2px;
+        --playing_author_font_size: medium;
+        --playing_controls_mt: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+
+    .player-wrapper {
+        padding: var(--player_wrapper_padding);
+        line-height: var(--player_wrapper_line_height);
+    }
+
+    .player-wrapper>.player {
+        width: var(--player_wrapper_width);
+    }
+
+    .playing-thumbnail {
+        width: var(--playing_thumbnail_width);
+        height: var(--playing_thumbnail_height);
+    }
+
+    .playing-details {
+        margin-top: var(--playing_details_mt);
+        font-size: var(--playing_details_font_size);
+        gap: var(--playing_details_gap);
+    }
+
+    .playing-author {
+        font-size: var(--playing_author_font_size);
+    }
+
+    .controls {
+        margin-top: var(--playing_controls_mt);
+    }
+}
+
+@media only screen and (min-width: 651px) and (max-width: 701px) {
+    .wrapper {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.8rem;
+        --card-top_margin: 0.2rem;
+        --card_song_author: 0.7rem;
+        --card_song_name: 0.7em;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.6rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 8px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 2rem;
+        --card_thumbnail_w: 2rem;
+
+        --card_small_h: 9.5rem;
+        --card_small_w: 9.5rem;
+        --card_small_inner_h: 8.5rem;
+        --card_small_inner_w: 8.5rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 8px;
+
+        --card_medium_h: 11.5rem;
+        --card_medium_w: 9.5rem;
+        --card_medium_inner_w: 8.5rem;
+        --card_medium_inner_h: 10.5rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 9px;
+
+        --card_large_h: 13.5rem;
+        --card_large_w: 9.5rem;
+        --card_large_inner_h: 12.5em;
+        --card_large_inner_w: 8.5rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 8px;
+
+        --player_wrapper_width: 220px;
+        --playing_thumbnail_height: 175px;
+        --player_wrapper_padding: 10px;
+        --playing_details_font_size: 2rem;
+        --player_wrapper_line_height: 25px;
+        --playing_details_mt: 20px;
+        --playing_thumbnail_width: 100%;
+        --playing_details_gap: 2px;
+        --playing_author_font_size: medium;
+        --playing_controls_mt: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+
+    .player-wrapper {
+        padding: var(--player_wrapper_padding);
+        line-height: var(--player_wrapper_line_height);
+    }
+
+    .player-wrapper>.player {
+        width: var(--player_wrapper_width);
+    }
+
+    .playing-thumbnail {
+        width: var(--playing_thumbnail_width);
+        height: var(--playing_thumbnail_height);
+    }
+
+    .playing-details {
+        margin-top: var(--playing_details_mt);
+        font-size: var(--playing_details_font_size);
+        gap: var(--playing_details_gap);
+    }
+
+    .playing-author {
+        font-size: var(--playing_author_font_size);
+    }
+
+    .controls {
+        margin-top: var(--playing_controls_mt);
+    }
+}
+
+@media only screen and (min-width: 701px) and (max-width: 768px) {
+    .wrapper {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.8rem;
+        --card-top_margin: 0.2rem;
+        --card_song_author: 0.7rem;
+        --card_song_name: 0.7em;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.6rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 8px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 2rem;
+        --card_thumbnail_w: 2rem;
+
+        --card_small_h: 10.5rem;
+        --card_small_w: 10.5rem;
+        --card_small_inner_h: 9.5rem;
+        --card_small_inner_w: 9.5rem;
+        --card_small_inner_padding: 7px;
+        --card_lyrics_font_size_small: 9px;
+
+        --card_medium_h: 12.5rem;
+        --card_medium_w: 10.5rem;
+        --card_medium_inner_w: 9.5rem;
+        --card_medium_inner_h: 11.5rem;
+        --card_medium_inner_padd: 7px;
+        --card_lyrics_font_size_mid: 10px;
+
+        --card_large_h: 14.5rem;
+        --card_large_w: 10.5rem;
+        --card_large_inner_h: 13.5em;
+        --card_large_inner_w: 9.5rem;
+        --card_large_inner_padd: 7px;
+        --card_lyrics_font_size_large: 10px;
+
+        --player_wrapper_width: 220px;
+        --playing_thumbnail_height: 175px;
+        --player_wrapper_padding: 20px;
+        --playing_details_font_size: 2rem;
+        --player_wrapper_line_height: 25px;
+        --playing_details_mt: 20px;
+        --playing_thumbnail_width: 100%;
+        --playing_details_gap: 2px;
+        --playing_author_font_size: medium;
+        --playing_controls_mt: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+
+    .player-wrapper {
+        padding: var(--player_wrapper_padding);
+        line-height: var(--player_wrapper_line_height);
+    }
+
+    .player-wrapper>.player {
+        width: var(--player_wrapper_width);
+    }
+
+    .playing-thumbnail {
+        width: var(--playing_thumbnail_width);
+        height: var(--playing_thumbnail_height);
+    }
+
+    .playing-details {
+        margin-top: var(--playing_details_mt);
+        font-size: var(--playing_details_font_size);
+        gap: var(--playing_details_gap);
+    }
+
+    .playing-author {
+        font-size: var(--playing_author_font_size);
+    }
+
+    .controls {
+        margin-top: var(--playing_controls_mt);
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1025px) {
+    .wrapper {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .wrapper {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    :root {
+        --card_border_radius: 16px;
+        --row_gap: 0.8rem;
+        --card-top_margin: 0.55rem;
+        --card_song_author: 0.85rem;
+        --card_song_name: 0.85rem;
+        --card_heading_gap: 6px;
+        --card_heading_title_margin: 0.6rem;
+        --card_heading_author_margin: -0.3rem;
+        --card_lyrics_padd_top: 8px;
+        --card_lyrics_padd_bottom: 5px;
+        --card_thumbnail_h: 3rem;
+        --card_thumbnail_w: 3rem;
+
+        --card_small_h: 13rem;
+        --card_small_w: 13rem;
+        --card_small_inner_h: 12rem;
+        --card_small_inner_w: 12rem;
+        --card_small_inner_padding: 12px;
+        --card_lyrics_font_size_small: 13px;
+
+        --card_medium_h: 15rem;
+        --card_medium_w: 13rem;
+        --card_medium_inner_w: 12rem;
+        --card_medium_inner_h: 14rem;
+        --card_medium_inner_padd: 12px;
+        --card_lyrics_font_size_mid: 13px;
+
+        --card_large_h: 17rem;
+        --card_large_w: 13rem;
+        --card_large_inner_h: 16em;
+        --card_large_inner_w: 12rem;
+        --card_large_inner_padd: 12px;
+        --card_lyrics_font_size_large: 13px;
+
+        --player_wrapper_width: 250px;
+        --playing_thumbnail_height: 205px;
+        --player_wrapper_padding: 15px;
+        --playing_details_font_size: 2.5rem;
+        --player_wrapper_line_height: 25px;
+        --playing_details_mt: 20px;
+        --playing_thumbnail_width: 100%;
+        --playing_details_gap: 2px;
+        --playing_author_font_size: medium;
+        --playing_controls_mt: 10px;
+    }
+
+    .wrapper {
+        gap: var(--row_gap);
+    }
+
+    .card {
+        margin: var(--card-top_margin);
+        border-radius: var(--card_border_radius);
+    }
+
+    .card_small {
+        height: var(--card_small_h);
+        width: var(--card_small_w);
+    }
+
+    .card_small .inner {
+        height: var(--card_small_inner_h);
+        width: var(--card_small_inner_w);
+        padding: var(--card_small_inner_padding);
+    }
+
+    .heading {
+        gap: var(--card_heading_gap);
+    }
+
+    .heading .details .song_name {
+        font-size: var(--card_song_name);
+    }
+
+    .heading .details .song_author {
+        font-size: var(--card_song_author);
+    }
+
+    .small_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_small);
+    }
+
+    .midium_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_mid);
+    }
+
+    .large_lyrics {
+        padding-top: var(--card_lyrics_padd_top);
+        padding-bottom: var(--card_lyrics_padd_bottom);
+        font-size: var(--card_lyrics_font_size_large);
+    }
+
+    .thumbnail {
+        height: var(--card_thumbnail_h);
+        width: var(--card_thumbnail_w);
+    }
+
+    .card_medium {
+        height: var(--card_medium_h);
+        width: var(--card_medium_w);
+    }
+
+    .card_medium .inner {
+        height: var(--card_medium_inner_h);
+        width: var(--card_medium_inner_w);
+        padding: var(--card_medium_inner_padd);
+    }
+
+    .card_large {
+        height: var(--card_large_h);
+        width: var(--card_large_w);
+    }
+
+    .card_large .inner {
+        height: var(--card_large_inner_h);
+        width: var(--card_large_inner_w);
+        padding: var(--card_large_inner_padd);
+    }
+
+    .player-wrapper {
+        padding: var(--player_wrapper_padding);
+        line-height: var(--player_wrapper_line_height);
+    }
+
+    .player-wrapper>.player {
+        width: var(--player_wrapper_width);
+    }
+
+    .playing-thumbnail {
+        width: var(--playing_thumbnail_width);
+        height: var(--playing_thumbnail_height);
+    }
+
+    .playing-details {
+        margin-top: var(--playing_details_mt);
+        font-size: var(--playing_details_font_size);
+        gap: var(--playing_details_gap);
+    }
+
+    .playing-author {
+        font-size: var(--playing_author_font_size);
+    }
+
+    .controls {
+        margin-top: var(--playing_controls_mt);
+    }
+}

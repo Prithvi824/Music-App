@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music App</title>
+    <link rel="stylesheet" href="/static/css/output.css" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/static/img/favicon.png" type="icon/png" />
+  </head>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <body class="">
+    <main class="pl-2 pr-2 relative">
+      <section class="wrapper h-full w-full grid parent-wrapper"></section>
+      <section
+        class="player-wrapper absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex justify-center items-center"
+      >
+        <div class="player h-auto pb-2">
+          <div
+            class="playing-thumbnail flex justify-center w-full overflow-hidden"
+          ></div>
+          <div class="playing-details">
+            <h1 class="playing-title">Pride</h1>
+            <h3 class="playing-author">Prithvi Srivastava</h3>
+          </div>
+          <div class="controls">
+            <div class="timeline">
+              <input
+                type="range"
+                max="60"
+                min="1"
+                value="1"
+                id="timeline"
+                class="song-timeline"
+              />
+              <div class="control-buttons flex text-4xl justify-evenly mt-3">
+                <div class="previous"><i class="bx bx-skip-previous"></i></div>
+                <div class="play">
+                  <div class="play-wrapper">
+                    <i class="bx bx-play pl-1 play-pause-btn"></i>
+                  </div>
+                </div>
+                <div class="next"><i class="bx bx-skip-next"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <audio id="myaudio"></audio>
+    </main>
+    <script src="/static/js/index.js"></script>
+    <script src="/static/js/song.js"></script>
+  </body>
+</html>

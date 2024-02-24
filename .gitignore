@@ -1,0 +1,11 @@
+.vscode/
+Include/
+Lib/
+node_modules/
+Scripts/
+Static/css/input.css
+oauth.json
+package-lock.json
+package.json
+pyvenv.cfg
+tailwind.config.js
